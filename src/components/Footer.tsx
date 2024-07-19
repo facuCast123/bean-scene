@@ -1,6 +1,8 @@
+import { motion } from "framer-motion";
+
 const Footer = () => {
   return (
-    <footer className="relative min-h-[500px] border-t border-black bg-accent-foreground bg-[url(/enhanced.png)] bg-cover bg-center bg-no-repeat font-playfair">
+    <footer className="relative z-20 min-h-[500px] border-t border-black bg-accent-foreground bg-[url(/enhanced.png)] bg-cover bg-center bg-no-repeat font-playfair">
       <div className="flex flex-col justify-around gap-y-6 px-10 pb-20 pt-52 text-white md:flex-row [&>*]:flex [&>*]:flex-col">
         <div className="basis-1/4 gap-y-12">
           <img className="w-72" src="/logo.png" alt="Logo" />
@@ -96,14 +98,22 @@ const Footer = () => {
         </div>
       </div>
 
-      <img
-        className="absolute -top-52 left-0 hidden md:block"
+      <motion.img
+        transition={{ duration: 1 }}
+        initial={{ opacity: 0, translateY: 50 }}
+        whileInView={{ opacity: 1, translateX: 0, translateY: 0 }}
+        viewport={{ once: true }}
+        className="absolute -top-52 left-0 z-20 hidden md:block"
         src="/cups/cup-3.png"
         alt="Coffee cup"
       />
 
-      <img
-        className="absolute -top-52 right-0 hidden -scale-x-[1] md:block"
+      <motion.img
+        transition={{ duration: 1 }}
+        initial={{ opacity: 0, translateY: 50, scaleX: -1 }}
+        whileInView={{ opacity: 1, translateX: 0, translateY: 0 }}
+        viewport={{ once: true }}
+        className="absolute -top-52 right-0 z-20 hidden -scale-x-[1] md:block"
         src="/cups/cup-3.png"
         alt="Coffee cup"
       />

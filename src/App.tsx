@@ -88,8 +88,8 @@ function App() {
 
         <div className="size-full font-playfair [&>*]:px-10 [&>*]:md:px-32">
           {/* Hero */}
-          <section className="relative h-screen max-h-screen bg-[url(/hero.png)] bg-cover bg-center bg-no-repeat text-white shadow-[inset_0px_0px_75px_55px_#1e1e1e] md:bg-top">
-            <div className="absolute left-1/2 top-1/2 z-10 flex w-11/12 -translate-x-1/2 -translate-y-1/2 flex-col items-center gap-y-4 text-center md:left-auto md:top-[60%] md:-translate-x-0 md:items-start md:gap-y-6 md:text-left">
+          <section className="relative flex min-h-screen justify-center bg-[url(/hero.png)] bg-cover bg-center bg-no-repeat py-32 text-white shadow-[inset_0px_0px_75px_55px_#1e1e1e] md:max-h-screen md:bg-top md:py-0">
+            <div className="left-1/2 top-1/2 z-10 flex w-11/12 flex-col items-center gap-y-4 text-center md:absolute md:left-auto md:top-[60%] md:-translate-x-0 md:-translate-y-1/2 md:items-start md:gap-y-6 md:text-left">
               <span className="text-xl font-medium tracking-wide">
                 We&apos;ve got your morning covered with
               </span>
@@ -275,10 +275,14 @@ function App() {
           </section>
 
           {/* Order banner */}
-          <article className="relative h-[574px] bg-[url(/backdrop-1.png)] bg-cover bg-no-repeat">
+          <article className="relative h-[574px] overflow-hidden bg-[url(/backdrop-1.png)] bg-cover bg-no-repeat">
             <div className="absolute left-0 size-full bg-accent/70" />
 
-            <img
+            <motion.img
+              transition={{ duration: 1 }}
+              initial={{ opacity: 0, translateY: 100 }}
+              whileInView={{ opacity: 1, translateY: 0 }}
+              viewport={{ once: true, amount: 0.5 }}
               className="absolute right-0 hidden md:block"
               src="/beans.png"
               alt="Coffee beans"
@@ -300,7 +304,13 @@ function App() {
               alt="Coffee cup"
             />
 
-            <div className="absolute left-1/2 top-1/2 z-20 w-[90%] -translate-x-1/2 -translate-y-1/2 space-y-8 text-center text-white md:left-auto md:w-2/5 md:-translate-x-0 md:text-left">
+            <motion.div
+              transition={{ duration: 1 }}
+              initial={{ opacity: 0, translateX: -100, translateY: `${-50}%` }}
+              whileInView={{ opacity: 1, translateX: 0 }}
+              viewport={{ once: true, amount: 0.5 }}
+              className="absolute left-1/2 top-1/2 z-20 w-[90%] -translate-x-1/2 -translate-y-1/2 space-y-8 text-center text-white md:left-auto md:w-2/5 md:-translate-x-0 md:text-left"
+            >
               <h1 className="text-5xl font-bold">
                 Get a chance to have an Amazing morning
               </h1>
@@ -313,7 +323,7 @@ function App() {
               <Button className="shadow-btn rounded-full px-8 font-bold text-black">
                 Order Now
               </Button>
-            </div>
+            </motion.div>
           </article>
 
           {/* Reviews */}
@@ -325,7 +335,13 @@ function App() {
               Our customers have amazing things to say about us
             </p>
 
-            <div className="relative mt-16 border border-primary/40 bg-primary/10 p-4 text-center md:px-20 md:py-32">
+            <motion.div
+              transition={{ duration: 0.5 }}
+              initial={{ opacity: 0, translateY: 100 }}
+              whileInView={{ opacity: 1, translateY: 0 }}
+              viewport={{ once: true, amount: 0.3 }}
+              className="relative mt-16 border border-primary/40 bg-primary/10 p-4 text-center md:px-20 md:py-32"
+            >
               <img
                 className="absolute left-10 top-10 hidden md:block"
                 src="/quotes.png"
@@ -361,7 +377,7 @@ function App() {
                 src={`/users/user-${userImage}.jpg`}
                 alt="Profile picture"
               />
-            </div>
+            </motion.div>
 
             <motion.img
               transition={{ duration: 1 }}
@@ -391,7 +407,13 @@ function App() {
           >
             <div className="absolute left-0 size-full bg-accent/70" />
 
-            <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 space-y-6 text-center">
+            <motion.div
+              transition={{ duration: 0.5 }}
+              initial={{ opacity: 0, translateY: -100, translateX: `${-50}%` }}
+              whileInView={{ opacity: 1, translateY: `${-50}%` }}
+              viewport={{ once: true, amount: 0.5 }}
+              className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 space-y-6 text-center"
+            >
               <h1 className="text-3xl font-bold text-white md:text-5xl">
                 Subscribe to get the Latest News
               </h1>
@@ -409,7 +431,7 @@ function App() {
                   Subscribe
                 </Button>
               </div>
-            </div>
+            </motion.div>
           </article>
         </div>
       </main>
